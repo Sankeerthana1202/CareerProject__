@@ -1,0 +1,29 @@
+﻿@model IEnumerable<CareerProject.Models.AccountView.User>
+@{
+    ViewData["Title"] = "My Meetings";
+}
+<br />
+<h3>My Scheduled Meetings</h3>
+@if (!Model.Any())
+{
+    <p>You have no scheduled meetings.</p>
+}
+else
+{
+    <div class="meeting-container">
+        @foreach (var meeting in Model)
+        {
+            <div class="meeting-card">
+                <h5 style="color:darkblue">Meeting with: @meeting.MentorEmail</h5>
+                <p>Date: @meeting.MeetingDate.ToString("f")</p>
+                <p>Status: @meeting.Status</p>
+                @if (meeting.Status == "Accepted")
+                {
+                    <a href="LINK" class="btn btn-primary custom-button">Join Meeting</a>
+                }
+            </div>
+        }
+    </div>
+}
+
+

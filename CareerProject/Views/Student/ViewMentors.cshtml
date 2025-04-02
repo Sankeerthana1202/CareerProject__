@@ -1,0 +1,45 @@
+﻿@model IEnumerable<CareerProject.Models.AccountView.User>
+@{
+    ViewData["Title"] = "Mentors";
+}
+<br />
+<h2>Get Guidance from experts!</h2>
+<br />
+<form asp-action="ViewMentors" method="get" class="mb-4">
+    <div class="input-group">
+        <select name="searchString" class="form-control search-input">
+            <option value="">Select a Skill</option>
+            <option value="Data Science">Data Science</option>
+            <option value="Machine Learning">Machine Learning</option>
+            <option value="Web Development">Web Development</option>
+            <option value="Cyber Security">Cyber Security</option>
+            <option value="Cloud Computing">Cloud Computing</option>
+        </select>
+        <button class="btn btn-primary custom-button3" type="submit">Search</button>
+    </div>
+</form>
+@if (!String.IsNullOrEmpty(ViewData["CurrentFilter"] as string))
+{
+    <div class="card-container">
+        @foreach (var mentor in Model)
+        {
+            <div class="card" style="width: 60rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Name : @mentor.FirstName @mentor.LastName</h5>
+                    <br />
+                    <h6 class="card-subtitle mb-2 text-body-secondary"></h6>
+                    <p class="card-text">Qualification : @mentor.Qualification</p>
+                    <p class="card-text">Experience : @mentor.Experience</p>
+                    <p class="card-text">Skills : @mentor.Skills</p>
+                    <br />
+                    <a asp-controller="Student" asp-action="MentorDetails" asp-route-email="@mentor.Email" class="card-link">View details</a>
+                    <a asp-controller="Meeting" asp-action="BookMeeting" asp-route-mentorEmail="@mentor.Email" class="card-link">Book meeting</a>
+                </div>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <p>Please enter a skill to search for mentors.</p>
+}

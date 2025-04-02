@@ -1,0 +1,57 @@
+﻿@model CareerProject.Models.AccountView.User
+
+@{
+    ViewData["Title"] = "Mentor Details";
+}
+
+<div class="mentor2-details-container">
+    <img src="~/images/profile-picture.jfif" alt="Profile Picture" class="profile-picture" />
+    <table class="mentor2-details-table">
+        <tr>
+            <td><strong>Name</strong></td>
+            <td>@Model.FirstName @Model.LastName</td>
+        </tr>
+        
+        <tr>
+            <td><strong>Major</strong></td>
+            <td>@Model.Major</td>
+        </tr>
+        <tr>
+            <td><strong>Contact Information</strong></td>
+            <td>Email: @Model.Email</td>
+        </tr>
+        
+        <tr>
+            <td><strong>Experience</strong></td>
+            <td>@Model.FirstName has over 10 years of experience in the field of @Model.Major.</td>
+        </tr>
+        
+        <tr>
+            <td><strong>Qualifications</strong></td>
+            <td>@Model.FirstName holds a Master's degree in @Model.Major from San Francis University.</td>
+        </tr>
+        
+        <tr>
+            <td><strong>Availability</strong></td>
+            <td>@Model.FirstName is available for meetings on weekdays from 9 AM to 5 PM.</td>
+        </tr>
+        
+        <tr>
+            <td><strong>Areas of Expertise</strong></td>
+            <td>@Model.FirstName specializes in the following areas: Data Science, Machine Learning, and Artificial Intelligence.</td>
+        </tr>
+        
+        <tr>
+            <td><strong>Achievements</strong></td>
+            <td>@Model.FirstName has received the Best Mentor Award for three consecutive years.</td>
+        </tr>
+        
+        <tr>
+            <td><strong>Personal Statement</strong></td>
+            <td>"I am passionate about helping students achieve their goals and reach their full potential." - @Model.FirstName</td>
+        </tr>
+        
+    </table>
+    <br />
+    <h6><a asp-controller="Meeting" asp-action="BookMeeting" asp-route-mentorEmail="@Model.Email" class="btn btn-primary custom-button3">BOOK A MEETING</a> now for one to one connect!</h6>
+</div>

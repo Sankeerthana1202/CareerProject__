@@ -1,0 +1,68 @@
+﻿@model CareerProject.Models.AccountView.User
+
+@{
+    ViewData["Title"] = "Edit Profile";
+    var email = ViewData["Email"] as string;
+}
+<h2>Edit Profile</h2>
+<form asp-action="EditProfileForMentor" method="post">
+    <div class="form-group">
+        <label asp-for="FirstName" class="control-label">First Name</label>
+        <input asp-for="FirstName" class="form-control" />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+  
+    <div class="form-group">
+        <label asp-for="LastName" class="control-label">Last Name</label>
+        <input asp-for="LastName" class="form-control" />
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+   
+    <div class="form-group">
+        <label asp-for="Gender" class="control-label">Gender</label>
+        <input asp-for="Gender" class="form-control" />
+        <span asp-validation-for="Gender" class="text-danger"></span>
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="Major" class="control-label">Major</label>
+        <input asp-for="Major" class="form-control" />
+        <span asp-validation-for="Major" class="text-danger"></span>
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="Experience" class="control-label">Experience</label>
+        <textarea asp-for="Experience" class="form-control"></textarea>
+        <span asp-validation-for="Experience" class="text-danger"></span>
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="Qualification" class="control-label">Qualification</label>
+        <input asp-for="Qualification" class="form-control" />
+        <span asp-validation-for="Qualification" class="text-danger"></span>
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="Company" class="control-label">Company</label>
+        <input asp-for="Company" class="form-control" />
+        <span asp-validation-for="Company" class="text-danger"></span>
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="Skills" class="control-label">Skills</label>
+        <textarea asp-for="Skills" class="form-control"></textarea>
+        <span asp-validation-for="Skills" class="text-danger"></span>
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="Achievements" class="control-label">Achievements</label>
+        <textarea asp-for="Achievements" class="form-control"></textarea>
+        <span asp-validation-for="Achievements" class="text-danger"></span>
+    </div>
+    <input type="hidden" asp-for="Email" />
+    
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary custom-button3">Save</button>
+    </div>
+</form>
+

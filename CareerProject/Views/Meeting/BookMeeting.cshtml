@@ -1,0 +1,37 @@
+﻿@model CareerProject.Models.AccountView.User
+
+@{
+    ViewData["Title"] = "Book a Meeting";
+}
+<br />
+<h2>Book a Meeting</h2>
+<br />
+
+
+<form asp-controller="Meeting" asp-action="BookMeeting" method="post">
+    <div class="form-group">
+        <label asp-for="MeetingDate" class="control-label">Select a date</label>
+        <input asp-for="MeetingDate" class="form-control" />
+        <span asp-validation-for="MeetingDate" class="text-danger"></span>
+    </div>
+    <br />
+
+    <div class="form-group">
+        <label asp-for="Email" class="control-label">Student Email</label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <br />  
+
+
+    <input type="hidden" asp-for="MentorEmail" />
+    <input type="hidden" asp-for="Status" value="Pending" />
+
+
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary custom-button">Schedule Meeting</button>
+    </div>
+</form>
+
+

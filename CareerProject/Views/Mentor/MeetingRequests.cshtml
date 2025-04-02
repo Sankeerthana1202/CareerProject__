@@ -1,0 +1,50 @@
+﻿@model IEnumerable<CareerProject.Models.AccountView.User>
+@{
+    ViewData["Title"] = "Meeting Requests";
+}
+<br />
+<h2>Meeting Requests</h2>
+<br />
+@if (!Model.Any())
+{
+    <p>No meeting requests available.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Student Email</th>
+                <th>Meeting Date</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var meeting in Model)
+            {
+                <tr>
+                    <td>@meeting.Email</td>
+                    <td>@meeting.MeetingDate.ToString("f")</td>
+                    <td>@meeting.Status</td>
+                    <td>
+                        @if(meeting.Status=="Pending"){
+                        <form  asp-controller="Mentor" asp-action="AcceptMeeting" method="post" style="display:inline;">
+                            <input type="hidden" name="email" value="@meeting.Email" />
+                            <button type="submit" class="btn btn-primary custom-button3">Accept</button>
+                        </form>
+                        <form asp-controller="Mentor" asp-action="DenyMeeting" method="post" style="display:inline;">
+                            <input type="hidden" name="email" value="@meeting.Email" />
+                            <button type="submit" class="btn btn-primary custom-button4">Deny</button>
+                        </form>
+                        }
+                        else if(meeting.Status=="Accepted"){
+                            <a href="link" class="btn btn-primary custom-button3">Join meeting</a>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
